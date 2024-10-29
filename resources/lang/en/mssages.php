@@ -4,6 +4,8 @@ return [
     'save' => 'Save',
     'inspection_parameters' => 'Inspection Parameters',
     'approval' => 'Approval',
+    'create_inspection' => 'Create Inspection',
+    'no_inspections_found' => 'No inspections found.',
 
     'work_order_no' => 'Work Order No',
     'date' => 'Date',

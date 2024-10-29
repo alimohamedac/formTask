@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Inspection extends Model
 {
+    protected $table = 'inspections';
+
     protected $fillable = [
         'work_order_no',
         'date',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\InspectionRequest;
 use App\Repositories\InspectionRepository;
+use Illuminate\Support\Facades\Log;
 
 class InspectionController extends Controller
 {
@@ -33,12 +34,12 @@ class InspectionController extends Controller
         return redirect()->route('pages.index')->with('success', __('messages.success_store'));
     }
 
-    public function show($id)
+    /*public function show($id)
     {
         $inspection = $this->inspectionRepository->find($id);
 
         return view('pages.show', compact('inspection'));
-    }
+    }*/
 
     public function edit($id)
     {

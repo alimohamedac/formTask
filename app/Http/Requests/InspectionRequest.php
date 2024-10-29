@@ -25,19 +25,19 @@ class InspectionRequest extends FormRequest
                 Rule::in([ShapeType::Circle, ShapeType::Custom, ShapeType::Rectangle, ShapeType::Square])
             ],
             'visual_check' => 'boolean',
-            'color_match'  => 'boolean',
+            'color_match' => 'boolean',
             'coating_thickness' => 'boolean',
-        ];
-    }
-
-    public function attributes()
-    {
-        return [
-            'work_order_no' => __('messages.work_order_no'),
-            'date'          => __('messages.date'),
-            'customer_name' => __('messages.customer_name'),
-            'project'       => __('messages.project'),
-            'shape'         => __('messages.shape'),
+            'bad_packaging' => 'boolean',
+            'bad_sealing' => 'boolean',
+            'before_paint' => 'boolean',
+            'after_paint' => 'boolean',
+            'bad_fabrication' => 'boolean',
+            'bad_finish' => 'boolean',
+            'surface_scratches' => 'boolean',
+            'approved_by' => 'nullable|string|max:255',
+            'inspector_name' => 'nullable|string|max:255',
+            'inspection_date' => 'nullable|date',
+            'signature' => 'nullable|string|max:255',
         ];
     }
 }

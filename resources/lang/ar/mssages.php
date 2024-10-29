@@ -4,6 +4,8 @@ return [
     'save' => 'حفظ',
     'inspection_parameters' => 'معايير الفحص',
     'approval' => 'الموافقة',
+    'create_inspection' => 'إنشاء فحص',
+    'no_inspections_found' => 'لم يتم العثور على أي فحوصات.',
 
     'work_order_no' => 'رقم أمر العمل',
     'date' => 'التاريخ',
