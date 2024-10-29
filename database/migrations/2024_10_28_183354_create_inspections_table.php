@@ -15,11 +15,11 @@ class CreateInspectionsTable extends Migration
     {
         Schema::create('inspections', function (Blueprint $table) {
             $table->id();
-            $table->string('work_order_no');
+            $table->string('work_order_no', 50);
             $table->date('date');
             $table->string('customer_name');
             $table->string('project');
-            $table->string('shape');
+            $table->enum('shape', ['circle', 'square', 'rectangle', 'custom']);
             $table->boolean('visual_check')->default(false);
             $table->boolean('color_match')->default(false);
             $table->boolean('coating_thickness')->default(false);
@@ -30,7 +30,12 @@ class CreateInspectionsTable extends Migration
             $table->date('inspection_date')->nullable();
             $table->string('signature')->nullable();
             $table->timestamps();
+
+            // indexing for performance
+            $table->index('customer_name');
+            $table->index('date');
         });
+
 
     }
 
