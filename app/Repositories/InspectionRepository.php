@@ -26,12 +26,14 @@ class InspectionRepository
     {
         $inspection = $this->find($id);
         $inspection->update($data);
+
         return $inspection;
     }
 
     public function delete($id)
     {
         $inspection = $this->find($id);
+
         return $inspection->delete();
     }
 }
