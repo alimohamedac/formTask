@@ -48,7 +48,7 @@ class Inspection extends Model
         'bad_finish' => 'boolean',
         'surface_scratches' => 'boolean',
     ];
-    
+
     public function getFormattedInspectionDateAttribute()
     {
         return $this->inspection_date ? $this->inspection_date->format('d-m-Y') : null;
