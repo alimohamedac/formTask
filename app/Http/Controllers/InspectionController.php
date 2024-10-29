@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InspectionRequest;
 use App\Repositories\InspectionRepository;
-use Illuminate\Http\Request;
 
 class InspectionController extends Controller
 {
@@ -26,22 +26,11 @@ class InspectionController extends Controller
         return view('pages.create');
     }
 
-    public function store(Request $request)
+    public function store(InspectionRequest $request)
     {
-        $data = $request->validate([
-            'work_order_no' => 'required|string',
-            'date' => 'required|date',
-            'customer_name' => 'required|string',
-            'project' => 'required|string',
-            'shape' => 'required|string',
-            'visual_check' => 'boolean',
-            'color_match' => 'boolean',
-            'coating_thickness' => 'boolean',
-        ]);
+        $this->inspectionRepository->create($request->validated());
 
-        $this->inspectionRepository->create($data);
-
-        return redirect()->route('pages.index')->with('success', 'Inspection created successfully.');
+        return redirect()->route('pages.index')->with('success', __('messages.success_store'));
     }
 
     public function show($id)
@@ -58,28 +47,17 @@ class InspectionController extends Controller
         return view('pages.edit', compact('inspection'));
     }
 
-    public function update(Request $request, $id)
+    public function update(InspectionRequest $request, $id)
     {
-        $data = $request->validate([
-            'work_order_no' => 'required|string',
-            'date' => 'required|date',
-            'customer_name' => 'required|string',
-            'project' => 'required|string',
-            'shape' => 'required|string',
-            'visual_check' => 'boolean',
-            'color_match' => 'boolean',
-            'coating_thickness' => 'boolean',
-        ]);
+        $this->inspectionRepository->update($id, $request->validated());
 
-        $this->inspectionRepository->update($id, $data);
-
-        return redirect()->route('pages.index')->with('success', 'Inspection updated successfully.');
+        return redirect()->route('pages.index')->with('success', __('messages.success_update'));
     }
 
     public function destroy($id)
     {
         $this->inspectionRepository->delete($id);
 
-        return redirect()->route('pages.index')->with('success', 'Inspection deleted successfully.');
+        return redirect()->route('pages.index')->with('success', __('messages.success_delete'));
     }
 }
